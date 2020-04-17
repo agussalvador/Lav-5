@@ -1,6 +1,6 @@
 package model;
 
-public class BeerProducter extends Thread implements Runnable {
+public class BeerProducter extends Thread {
 
     //attributes
     private BeerHouse beerHouse;
@@ -10,31 +10,16 @@ public class BeerProducter extends Thread implements Runnable {
     }
 
     @Override
-    public synchronized void run() {
+    public void run() {
 
-        int BeersAdds = 0;
-        int TimesToAdd =  1+(int)(Math.random()*((100)+1));
+        //int BeersAdds = 0;
 
-        for (int i=0; i<TimesToAdd; i++){
-
-            int BeersToAdd = 1+(int)(Math.random()*((100)+1));
-
-            if((BeersToAdd + beerHouse.getStock()) >= 100){
-                try{
-                    BeerProducter.sleep(TimesToAdd);
-                }catch (Exception e) { e.printStackTrace(); }
-            }
-            else{
-                BeersAdds += BeersToAdd;
-                System.out.println("productor:");
-                System.out.println("Stock actual :" +beerHouse.getStock());
-                System.out.println("Cervezas producidas :" +BeersToAdd);
-                System.out.println("---------------------------");
-                beerHouse.BeerAdd(BeersToAdd);
-            }
-         notifyAll();
+        for (int i = 1; i <= 10; i++) {
+            beerHouse.BeerAdd();
+            /*BeersAdds ++;
+            System.out.println("Total cervezas producidas:" +BeersAdds);*/
         }
-        System.out.println("Cervezas producidas :" +BeersAdds);
+
     }
 
 

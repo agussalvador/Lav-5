@@ -4,6 +4,7 @@ public class BeerHouse {
 
     //Attributes
     private int stock;
+    private boolean available = false;
 
     //Constructor
 
@@ -22,15 +23,32 @@ public class BeerHouse {
     }
 
     //Custom methods
-    public synchronized void BeerAdd(int cant){
-        if((this.stock + cant) <= 100){
-            this.stock += cant;
+    public synchronized void BeerAdd(){
+        while(available && this.stock == 10){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+            this.stock += 1;
+            available = true;
+            notifyAll();
+            System.out.println("productor stock=" +this.stock);
+
     }
 
-    public synchronized void BeerDelete(int cant){
-        if(this.stock >= cant){
-            this.stock -= cant;
+    public synchronized void BeerDelete(){
+        while (!available && this.stock == 0){
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+            this.stock -= 1;
+            System.out.println("consumidor stock=" +this.stock);
+            available = false;
+            notifyAll();
     }
 }
