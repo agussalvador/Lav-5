@@ -12,15 +12,12 @@ public class BeerProducter extends Thread {
     @Override
     public void run() {
 
-        //int BeersAdds = 0;
-
-        for (int i = 1; i <= 10; i++) {
+        int BeersAdds = 0;
+        boolean flag = true;
+        for (int i = 1; i <= 100; i++) {
             beerHouse.BeerAdd();
             /*BeersAdds ++;
             System.out.println("Total cervezas producidas:" +BeersAdds);*/
         }
-
     }
-
-
 }

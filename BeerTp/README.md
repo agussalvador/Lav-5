@@ -5,15 +5,17 @@
 3) Explicar el recurso compartido.
 4) Explicar las 3 formas de instanciar un thread.
 
+
+1) Se necesita un solo consumidor para que el stock llegue a 0.
 2) El bloque synchronized evita que cualquier otro thread ejecute 
 ningún otro método synchronized sobre ese mismo
     objeto
-3) 
-
-
+3) El recurso compartido son los datos a los que 2 o mas threads deben acceder.
+La exclusion mutua ocurre cuando unicamente uno de los procesos puede ejecutar la seccion critica, que es un bloque de codigo donde se accede al recurso compartido.
+ 
 
 4) Formas de instanciar un thread:
     a. Extender la clase Thread.      
     b. implementar la interfaz Runnable
     c. Hacer un new de Thread
-    Para correrlos debemos llamar al metodo start(). 
+    Para ejecutarlos debemos llamar al metodo start(). 

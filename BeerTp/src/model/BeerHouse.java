@@ -24,7 +24,7 @@ public class BeerHouse {
 
     //Custom methods
     public synchronized void BeerAdd(){
-        while(available && this.stock == 10){
+        while(available && this.stock == 100){
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -35,7 +35,6 @@ public class BeerHouse {
             available = true;
             notifyAll();
             System.out.println("productor stock=" +this.stock);
-
     }
 
     public synchronized void BeerDelete(){

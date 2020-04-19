@@ -9,8 +9,8 @@ public class main {
         BeerProducter p1 = new BeerProducter(cheverry);
 
         BeerConsumer c1 = new BeerConsumer(cheverry);
-        BeerConsumer c2 = new BeerConsumer(cheverry);
-        BeerConsumer c3 = new BeerConsumer(cheverry);
+        //BeerConsumer c2 = new BeerConsumer(cheverry);
+        //BeerConsumer c3 = new BeerConsumer(cheverry);
 
         p1.start();
         c1.start();
